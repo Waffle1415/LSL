@@ -18,8 +18,8 @@ def main():
 
     UP = 'UP'
     DOWN = 'DOWN'
-    high = 0.25                                          #閾値の設定
-    low = 0.25
+    high = 0.5                                          #閾値の設定
+    low = 0.2
     inlet.open_stream()                                  # バッファ開始
     sleep(.1)                                            # バッファにある程度データをためる
 
@@ -37,7 +37,7 @@ def main():
         #閾値に応じて文字列を出力
         if(sample > high):
            outlet.push_sample([UP])
-        if(sample < high):
+        if(sample < low):
             outlet.push_sample([DOWN])
         time.sleep(3)
 
