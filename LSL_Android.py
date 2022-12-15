@@ -1,9 +1,7 @@
-"""Example program to demonstrate how to send string-valued markers into LSL."""
 import numpy as np
 import random, time, pylsl
 from time import sleep
 from pylsl import StreamInfo, StreamOutlet, StreamInlet, resolve_streams
-
 
 def main():
     info = StreamInfo('MyMarkerStream', 'Markers', 1, 0, 'string', 'myuidw43536')
@@ -16,10 +14,6 @@ def main():
         if (name == "RValues"):
             inlet = pylsl.StreamInlet(stream)
 
-    # create a new inlet to read from the stream
-    #inlet = StreamInlet(streams[0])
-
-    # next make an outlet
     outlet = StreamOutlet(info)
 
     UP = 'UP'
@@ -46,7 +40,6 @@ def main():
         if(sample < high):
             outlet.push_sample([DOWN])
         time.sleep(3)
-
 
 if __name__ == '__main__':
     main()
